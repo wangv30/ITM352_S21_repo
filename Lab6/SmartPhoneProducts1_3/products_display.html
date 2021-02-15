@@ -8,8 +8,8 @@
     <style id="localStyle"></style> 
     <script>
         var name = "Vincent Wang";
-        var hits = 10;
-        var spins = 100;
+        var hits = 0;
+        var spins = 0;
     </script>
 </head>
 <body>
@@ -29,12 +29,10 @@
     <div><main> 
     <section class="item" id="HTC" 
     onmouseover= "
-    hits_span.innerHTML = hits;
-    spins_span.innerHTML = spins;
+    spins_span.innerHTML = ++spins;
     this.className = 'item rotate';"
     onclick="
-    hits_span.innerHTML = hits;
-    spins_span.innerHTML = spins;
+    hits_span.innerHTML = ++hits;
     this.className='item';"> 
         <h2>HTC</h2>
         <p>&dollar;40.00</p>
