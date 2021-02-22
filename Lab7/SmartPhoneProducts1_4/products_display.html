@@ -12,6 +12,7 @@
         var last_name = 'Wang';
         var hits = 0;
         var spins = 0;
+        var over_half = false;
     </script>
 </head>
 <body>
@@ -31,6 +32,7 @@
         Hits:<span id="hits_span">0</span>
         Spins:<span id="spins_span">0</span>
         Hit/Spin:<span id="hit_spin_span">0</span>
+        You win:<span id="win_span">pending...</span>
         </p>        
     <div>
         <input id='speedSlider' type='range' min=".1" max="5" step=".1" 
@@ -43,12 +45,16 @@
     onmouseover= "
     spins_span.innerHTML = ++spins;
     this.className = 'item rotate';
-    hit_spin_span.innerHTML = (hits_span.innerHTML/spins_span.innerHTML).toFixed(2) ;
+    hit_spin_span.innerHTML = (hits/spins).toFixed(2) ;
+    over_half ||= ((hits/spins >= 0.5) && (hits < spins));
+    win_span.innerHTML = over_half
     "
     onclick="
     hits_span.innerHTML = ++hits;
     this.className='item';
-    hit_spin_span.innerHTML = (hits_span.innerHTML/spins_span.innerHTML).toFixed(2);
+    hit_spin_span.innerHTML = (hits/spins).toFixed(2);
+    over_half ||= ((hits/spins >= 0.5) && (hits < spins));
+    win_span.innerHTML = over_half
     "> 
         <h2>HTC</h2>
         <p>&dollar;40.00</p>
