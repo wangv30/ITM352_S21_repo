@@ -11,15 +11,11 @@
     <table border="1">
     <tr><th>Number</th><th>Item</th></tr> 
     <script>
-        document.write(`
         for (var item_num = 1; eval("typeof name"+item_num) != 'undefined'; item_num++) {
-    <tr><td>1</td><td>HTC</td></tr>
-    <tr><td>2</td><td>Apple</td></tr>
-    <tr><td>3</td><td>Nokia</td></tr>
-    <tr><td>4</td><td>Samsung</td></tr>
-    <tr><td>5</td><td>Blackberry</td></tr>
-    
+            document.write(`
+        <tr><td>${item_num}</td><td>${eval('name' + item_num)}</td><tr>
         `);
+        }
     </script>
     </table>
 </body>
