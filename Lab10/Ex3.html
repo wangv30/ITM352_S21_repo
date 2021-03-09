@@ -7,12 +7,16 @@
     <title>Document</title>
 </head>
 <body>
-    <table style="border: 1px solid black;text-align: center;" onclick="
-    // tb = document.getElementsByTagName('tbody')[0];
-    tb.appendChild(document.createElement('tr'))
-    ">
+    
+    <table style="border: 1px solid black;text-align: center;"onclick="
 
-    <table style="border: 1px solid black;text-align: center;">
+    new_row = this.appendChild(document.createElement('tr'));
+
+    for (var i = 1; i <= this.rows[0].cells.length; i++) {
+        new_cell = new_row.appendChild(document.createElement('td'));
+        new_cell.innerHTML = 'xxx';
+    }
+    ">
         <tr style="border: 1px solid black;"><th style=
         "border: 1px solid black;">Product #</th><th>Name</th>
         <th>Price</th><th>Quantity</th><th>Ext Price</th></tr>
@@ -39,5 +43,9 @@
         }
     </script>
         </table>
+        <input type="button" value="Delete last row" onclick="
+        tb = document.getElementsByTagName('table')[0];
+        tb.deleteRow(tb.rows.length - 1);
+        ">
 </body>
 </html>
