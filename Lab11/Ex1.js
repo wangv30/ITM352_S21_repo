@@ -20,4 +20,4 @@ function callBack(part) {
 }
 parts.forEach(function (item) {
     console.log( (typeof item == 'string' && item.length > 0)?true:false ) 
-}
+})
