@@ -1,11 +1,17 @@
-// Code from getting started with Assignment1 screencast
+// Code from "getting started with Assignment1 screencast"
+// creates our own server to host our website on
 
+var products = require('./products.json');
 var express = require('express');
 var app = express();
 var myParser = require("body-parser");
 var fs = require('fs');
-var data = require('./products.json');
-var products = data.products;
+
+// code taken from Assignment 1 Workshop slides
+app.get("/product_data.js", function (req, res, next) {
+    res.type('.js');
+    res.send(`var products = ${JSON.stringify(products)};`);
+    });     
 
 app.all('*', function (request, response, next) {
     console.log(request.method + ' to ' + request.path);

@@ -1,49 +1,23 @@
+<script src="./product_data.js" type="text/javascript"></script> 
+<!-- code above taken from Assignment 1 instructions -->
 
-
+<!-- code taken and altered from SmartPhoneProducts3 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smartphone Products</title>
+    <title>Water Bottle Products</title>
     <link rel="stylesheet" href="products-style.css">
-    <script>
-     var product1 = {
-     brand: "HTC",
-     price: 40.00,
-     image: "http://dport96.github.io/ITM352/morea/080.flow-control-II/HTC.jpg"}
-
-     var product2 = {
-     brand: "Apple",
-     price: 75.00,
-     image: "http://dport96.github.io/ITM352/morea/080.flow-control-II/iphone-3gs.jpg"}
-
-     var product3 = {
-     brand: "Nokia",
-     price: 35.00,
-     image: "http://dport96.github.io/ITM352/morea/080.flow-control-II/Nokia.jpg"}
-
-     var product4 = {
-     brand: "Samsung",
-     price: 45.00,
-     image: "http://dport96.github.io/ITM352/morea/080.flow-control-II/Samsung.jpg"}
-
-     var product5 = {
-     brand: "Blackberry",
-     price: 10.00,
-     image: "http://dport96.github.io/ITM352/morea/080.flow-control-II/Blackberry.jpg"}
-   
-    var products = [product1, product2, product3, product4, product5];
-   
-   </script>
 </head>
 <body>
-    <h1>Vincent's Used Smart Phone Store</h1>
-    <h1>Used Smartphone Store</h1>
+    <h1>Vincent's Water Bottle Store</h1>
+    <h1>Water Bottle Store</h1>
     <form action="./process_form" method="POST">
     <div>
     <main> 
     <script>
+        // displays product information
         for (var i = 0; i < products.length; i++) {
         document.write(`
     </section>
@@ -52,7 +26,7 @@
         <p>\$${products[i].price}</p>
         <label>Quantity</label>
         <input type = "text" placeholder = "0" name="quantity${i}">
-        <img src=${products[i].image}> 
+        <img src= "./images/${products[i].image}""> 
     </section>
     `)
 }
@@ -61,6 +35,6 @@
 </div> 
     <input type="submit" value="Purchase!">
 </form>
-<h1>Your One Stop Phone Shop</h1>
+<h1>Your One Stop Water Bottle Shop</h1>
 </body>
 </html> <img src="" alt="">
