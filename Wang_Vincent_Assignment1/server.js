@@ -26,7 +26,7 @@ app.post("/process_form", function (request, response) {
 app.use(express.static('./public'));
 app.listen(8080, () => console.log('listening on wang 8080'));
 
-
+// function from invoice4
 function isNonNegInt (q, returnErrors = false) {
     errors = []; // assume no errors at first
     if(Number(q) != q) errors.push('Not a number!'); // Check if string is a number value
