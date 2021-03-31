@@ -13,7 +13,7 @@
 <body>
     <h1>Vincent's Water Bottle Store</h1>
     <h1>Water Bottle Store</h1>
-    <form action="./process_form" method="POST">
+    <form name="process_form" action="./process_form" method="POST">
     <div>
     <main> 
     <script>
@@ -33,12 +33,44 @@
 </script>
 </main>
 </div> 
-    <input type="submit" value="Purchase!">
+    <input name= "purchase_submit_button" type="submit" value="Purchase!">
 </form>
 <h1>Your One Stop Water Bottle Shop</h1>
 </body>
 </html> <img src="" alt="">
 
 <script>
-    
+    function isNonNegInt(val, returnErrors) {
+        /* This function returns true if value is a non-negative integer. Copied from Lab 12.*/
+        errors = []; // assume no errors at first
+        if (Number(val) != val) errors.push('Not a number!'); // Checks if string is a number value
+        if (val < 0) errors.push('Negative value!'); // Check if it is non-negative
+        if (parseInt(val) != val) errors.push('Not an integer!'); // Check that it is an integer
+        return returnErrors ? errors : ((errors.length == 0) ? false : true);
+    }
+    function checkQuantityTextbox(theTextbox) {
+        /*Returns text of how many items are being purchased if amount in textbox has no errors */
+        errs = isNonNegInt(theTextbox.value, true);
+        if (errs.length == 0) errs = ['You want:']; 
+        if (theTextbox.value.trim() == '') errs = ['Quantity'];
+        document.getElementById(theTextbox.name + '_label').innerHTML = errs.join(", ");
+    }
+    window.onload = function () {
+        let params = (new URL(document.location)).searchParams;
+        if (params.has('submitPurchase')) {
+        has_errors = false; // assumes quantities have no errors
+        total_qty = 0;
+        //Displays name, image, and price for each product
+        for (i = 0; i < products.length; i++) {
+        if (params.has(`quantity${i}`)) { a_qty = params.get(`quantity${i}`);
+            product_form[`quantity${i}`].value = a_qty;
+            total_qty += a_qty;
+        if (!isNonNegInt(a_qty)) {
+            has_errors = true; // invalid quantity
+            checkQuantityTextbox(product_form[`quantity${i}`]); // points out the error 
+        }
+            }
+        }
+    }
+}
 </script>

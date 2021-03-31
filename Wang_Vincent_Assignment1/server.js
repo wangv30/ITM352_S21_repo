@@ -6,6 +6,7 @@ var express = require('express');
 var app = express();
 var myParser = require("body-parser");
 var fs = require('fs');
+const querystring = require('querystring'); // Sets querystring module as variable "querystring"
 
 // code taken from Assignment 1 Workshop slides
 app.get("/product_data.js", function (req, res, next) {
@@ -20,8 +21,18 @@ app.all('*', function (request, response, next) {
 
 app.use(myParser.urlencoded({ extended: true }));
 app.post("/process_form", function (request, response) {
-    process_quantity_form(request.body, response);
-});
+    POST = request.body;
+    if (typeof POST['submitPurchase'] != 'undefined') {
+    for(i in products) { 
+ 
+        if (isNonNegInt(q)) {
+            response.redirect("./invoice.html");
+        }
+        else {
+            window.location.href = "products_display.html"
+        }
+    }
+}});
 
 app.use(express.static('./public'));
 app.listen(8080, () => console.log('listening on wang 8080'));
