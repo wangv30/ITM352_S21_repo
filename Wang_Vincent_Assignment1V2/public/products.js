@@ -1,3 +1,4 @@
+// Product Data
 products = [
     {
     "brand": "Pogo",
@@ -23,4 +24,7 @@ products = [
     "brand": "Coldest",
     "price": 50.00,
     "image": "coldest.jpg"}
-    ]
+    ];
+if(typeof module != 'undefined') {
+     module.exports.products = products;
+    }
