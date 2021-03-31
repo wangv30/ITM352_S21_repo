@@ -53,57 +53,51 @@ window.onload = function () {
     }
 </script>
 
-
+<!-- code taken and altered from SmartPhoneProducts3 -->
 <!DOCTYPE html>
-<html>
-<title>Hydro Store</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
-<style>
-body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
-.w3-bar-block .w3-bar-item {padding:20px}
-</style>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Bottle Products</title>
+    <link rel="stylesheet" href="products-style.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
 <body>
-<form name="product_selection_form" action="" method="GET">
-<!-- Top menu -->
-<div class="w3-top">
-  <div class="w3-white w3-xlarge" style="max-width:1200px;margin:auto">
-    <div class="w3-right w3-padding-16"><input name= "purchase_submit" type="submit" value="Hydrate!"></div>
-    <div class="w3-center w3-padding-16"> Hydro Store </div>
-  </div>
-</div>
-  
-<!-- !PAGE CONTENT! -->
-<div class="w3-main w3-content w3-padding" style="max-width:1200px;margin-top:100px">
-
-<script>
-    // displays product information and images
-    for (var i = 0; i < products.length; i++) {
-    document.write(`
-</section>
-    <section class="item"> 
-    <h2>${products[i].brand}</h2>
-    <p>\$${products[i].price}</p>
-    <label id="quantity${i}_label"}">Quantity</label>
-    <input type = "text" 
-    placeholder = "0" 
-    name="quantity${i}" 
-    onkeyup="checkQuantityTextbox(this);">
-    <img src= "./images/${products[i].image}"> 
-</section>
-`)
+    <h1>Vincent's Water Bottle Store</h1>
+    <h1>Water Bottle Store</h1>
+    <form name="product_selection_form" action="" method="GET">
+    <div>
+    <main> 
+    <script>
+        // displays product information and images
+        for (var i = 0; i < products.length; i++) {
+        document.write(`
+    </section>
+        <section class="item"> 
+        <h2>${products[i].brand}</h2>
+        <p>\$${products[i].price}</p>
+        <label id="quantity${i}_label"}">Quantity</label>
+        <input type = "text" 
+        placeholder = "0" 
+        name="quantity${i}" 
+        onkeyup="checkQuantityTextbox(this);">
+        <img src= "./images/${products[i].image}"> 
+    </section>
+    `)
 }
 </script>
-  <!-- Footer -->
-  <footer class="w3-row-padding w3-padding-32">
-    <div class="w3-third">
-      <h3>Thanks For Shopping</h3>
-      <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
-    </div>
+</main>
+</div> 
+    <input name= "purchase_submit" type="submit" value="Purchase!">
 </form>
-</script>
-
+<h1>Your One Stop Water Bottle Shop</h1>
 </body>
 </html>
+
+
+
+
+
+
+
