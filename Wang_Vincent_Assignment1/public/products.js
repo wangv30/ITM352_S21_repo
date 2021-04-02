@@ -1,4 +1,5 @@
-// Product Data
+// Vincent Wang - 3/25/21
+// Creates array of Products
 products = [
     {
     "brand": "Pogo",

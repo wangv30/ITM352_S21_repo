@@ -1,4 +1,6 @@
-// Code from "getting started with Assignment1 screencast"
+// Vincent Wang - 3/25/21
+
+// Code from Assignment1 Instructions
 // creates our own server to host our website on
 var express = require('express');
 var app = express();
