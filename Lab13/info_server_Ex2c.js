@@ -1,5 +1,6 @@
 var express = require('express');
 var app = express();
+ 
 
 // detects request for all and displays path
 app.all('*', function (request, response, next) {
@@ -12,4 +13,5 @@ app.get('/test', function (request, response, next) {
     response.send("I got a request for /test");
 });
 
+app.use(express.static('./public'));
 app.listen(8080, () => console.log(`listening on port 8080`)); // note the use of an anonymous function here
