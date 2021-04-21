@@ -48,8 +48,6 @@ window.onload = function () {
             alert("Please enter only valid quantities!");
         } else if(total_qty == 0) { // if no quantity selection then alert
             alert("Please select some quantities!");
-        } else if (total_qty >= 50) { // Extra Credit: Sets "stock" at 50. Show alert if they try to order more than what's in stock
-            alert("I'm Sorry. We don't have that many in stock!");
         } else { // Displays invoice
             window.location = `./invoice.html${document.location.search}`;
             window.stop;
