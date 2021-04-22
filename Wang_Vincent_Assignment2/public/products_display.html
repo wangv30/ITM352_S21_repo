@@ -48,9 +48,6 @@ window.onload = function () {
             alert("Please enter only valid quantities!");
         } else if(total_qty == 0) { // if no quantity selection then alert
             alert("Please select some quantities!");
-        } else { // Displays invoice
-            window.location = `./invoice.html${document.location.search}`;
-            window.stop;
         }
     }
 }
@@ -86,7 +83,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 
 <!-- !PAGE CONTENT! -->
 <div class="w3-main" style="margin-left:250px">
-    <form name="product_selection_form" action="" method="GET">
+    <form name="product_selection_form" action="process_page" method="POST">
   <!-- Top header -->
   <header class="w3-container w3-xlarge">
     <p class="w3-left">Hydration Station</p>
