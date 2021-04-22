@@ -1,6 +1,6 @@
 // Vincent Wang - 3/25/21
 
-// Code from Assignment1 Instructions and from Getting started with Assignment 2 screencast
+// Code from Assignment1 Instructions and from Prof. Port's Getting started with Assignment 2 screencast
 // creates our own server to host our website on
 var express = require('express');
 var app = express();
@@ -11,6 +11,14 @@ app.use(myParser.urlencoded({ extended: true }));
 var qs = require('qs');
 var fs = require('fs'); // Loads/ starts up fs system actions
 const querystring = require('querystring');
+const { response } = require('express');
+
+// Reads user_data.json - Lab 14 code
+var user_data_file = "./user_data.json";
+if (fs.existsSync(user_data_file)) {
+    var file_stats = fs.statSync(user_data_file)
+    var user_data = JSON.parse(fs.readFileSync(user_data_file, "utf-8"));
+} 
 
 // detects request for all and displays path - code taken from Lab 13 Ex 4
 app.all('*', function (request, response, next) {
@@ -46,17 +54,34 @@ app.post("/process_page", function (request, response, next) {
 }
 })
 
-// Processes login form - part of code from Assignment 2 screencast
+// Processes login form - part of code from Prof Port's Assignment 2 screencast
 app.post('/process_login', function (request, response, next) {
-    console.log(request.query);
     request.query["uname"] = request.body["uname"];
-    response.redirect("invoice.html?" + qs.stringify(request.query)); 
-});
+    let username_entered = request.body["uname"];
+    let password_entered = request.body["psw"];
+    if (typeof user_data[username_entered] != "undefined") {
+        if (user_data[username_entered]["password"] == password_entered) {
+        response.redirect("invoice.html?" + qs.stringify(request.query));
+    } else {
+        
+    }
+} else {
+        
+}
+})
 
-// Processes register form - part of code from Assignment 2 screencast
+
+// Processes register form - part of code from Prof Port's Assignment 2 screencast
 app.post('/process_register', function (request, response, next) {
-    console.log(request.query);
-    request.query["uname"] = request.body["uname"];
+    request.query["uname"] = request.body["uname"];  
+    // add a new user to the DB
+    username = request.body["uname"];
+    user_data[username] = {};
+    user_data[username].password = request.body["psw"];
+    user_data[username].email = request.body["email"];
+    user_data[username].name = request.body["fullname"];
+    // save updated user_data to file (DB)
+    fs.writeFileSync(user_data_file, JSON.stringify(user_data));
     response.redirect("invoice.html?" + qs.stringify(request.query)); 
 });
 
