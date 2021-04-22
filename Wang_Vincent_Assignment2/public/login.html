@@ -1,5 +1,5 @@
-<!-- Code taken from W3 schools - How to create a login form -->
-
+<!-- Code taken from W3 schools - How to create a login form (Followed along with getting started with Assignment 2 screencast) -->
+<!-- Creates a login form -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +10,9 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="process_login" method="post">
+        <script>
+            document.write(`<form action="process_login${location.search}" method="post">`)
+        </script>
         <div class="imgcontainer">
             <img src="./images/img_avatar2.png" alt="Avatar" class="avatar">
         </div>
@@ -32,6 +34,9 @@
             <button type="button" class="cancelbtn">Cancel</button>
             <span class="psw">Forgot <a href="#">password?</a></span>
         </div>
+        <script>
+            document.write(`<p>Don't have an account? <a href="./register.html${location.search}">Sign Up!</a></p>`);
+        </script>
         </form>
 </body>
 </html>

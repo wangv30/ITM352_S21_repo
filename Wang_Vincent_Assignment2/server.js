@@ -1,6 +1,6 @@
 // Vincent Wang - 3/25/21
 
-// Code from Assignment1 Instructions
+// Code from Assignment1 Instructions and from Getting started with Assignment 2 screencast
 // creates our own server to host our website on
 var express = require('express');
 var app = express();
@@ -19,7 +19,7 @@ app.all('*', function (request, response, next) {
 });
 
 app.post("/process_page", function (request, response, next) {
-    //process_purchase(request.body, response);
+    // following code same as code in products_display but modified
     let POST = request.body;
     if (typeof POST['purchase_submit'] != 'undefined') {
     const stringified = querystring.stringify(POST);
@@ -35,25 +35,29 @@ app.post("/process_page", function (request, response, next) {
             }
         }
     }
-    // Respond to errors or redirect to invoice if no errors
-    if(has_errors) {
+    // Respond to errors or redirect to login if no errors - response.redirect code found from Getting start with Assign. 2 screencast
+    if(has_errors) { // if has errors then keeps user on products_display page
         response.redirect("./products_display.html?" + stringified);
-    } else if(total_qty == 0) { // if no quantity selection then alert
+    } else if(total_qty == 0) { // if no quantity selection then keeps user on products_display page
         response.redirect("./products_display.html?" + stringified);
-    } else {
-        response.redirect("./invoice.html?" + stringified);
+    } else { // if nothing wrong then send user to login page
+        response.redirect("./login.html?" + stringified);
     }
 }
 })
 
-// Processes login form - code taken from Lab 13 Ex 4
+// Processes login form - part of code from Assignment 2 screencast
 app.post('/process_login', function (request, response, next) {
-    response.send(request.body); 
+    console.log(request.query);
+    request.query["uname"] = request.body["uname"];
+    response.redirect("invoice.html?" + qs.stringify(request.query)); 
 });
 
-// Processes register form - code taken from Lab 13 Ex 4
+// Processes register form - part of code from Assignment 2 screencast
 app.post('/process_register', function (request, response, next) {
-    response.send(request.body); 
+    console.log(request.query);
+    request.query["uname"] = request.body["uname"];
+    response.redirect("invoice.html?" + qs.stringify(request.query)); 
 });
 
 app.use(express.static('./public')); // Runs our public folder on the server
