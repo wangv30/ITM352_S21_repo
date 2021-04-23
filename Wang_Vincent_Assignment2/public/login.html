@@ -1,38 +1,37 @@
 <!-- Vincent Wang - 4/22/21 -->
-
+<!-- Login template from https://speckyboy.com/login-pages-html5-css/ -->
 <!-- Code taken from W3 schools - How to create a login form (Followed along with getting started with Assignment 2 screencast) -->
 <!-- Creates a login form -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="login.css" >
+    <link rel="stylesheet" href="login.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <body>
+    <div class="login">
+        <h1>Login to Hydration Station</h1>
         <script>
+            // Generates login form
             document.write(`<form action="process_login${location.search}" method="post">`)
         </script>
-        <div class="imgcontainer">
-            <img src="./images/img_avatar2.png" alt="Avatar" class="avatar">
-        </div>
-         
-        <div class="container">
-            <label for="uname"><b>Username</b></label>
-            <input type="text" placeholder="Enter Username" name="uname" required>
-        
-            <label for="psw"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" name="psw" required>
-        
-            <button type="submit">Login</button>
-        </div>
+        <!-- Creates input boxes for users to input their login info -->
+          <p><input type="text" placeholder="Enter Username" name="uname" required></p>
+          <p><input type="password" placeholder="Enter Password" name="psw" required></p>
+          <p class="submit"><input type="submit" name="commit" value="Login"></p>
+        </form>
+      </div>
+      
+      <div class="login-help">
         <script>
             // Sends to register.html if click this button for users who have not registered
             document.write(`<p>Don't have an account? <a href="./register.html${location.search}">Sign Up!</a></p>`);
         </script>
-        </form>
+      </div>
 </body>
 </html>
+
 
