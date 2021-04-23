@@ -1,4 +1,4 @@
-// Vincent Wang - 3/25/21
+// Vincent Wang - 4/22/21
 
 // Code from Assignment1 Instructions and from Prof. Port's Getting started with Assignment 2 screencast
 // creates our own server to host our website on
@@ -8,8 +8,8 @@ var myParser = require("body-parser");
 var data = require('./public/products.js');
 var products = data.products
 app.use(myParser.urlencoded({ extended: true }));
-var qs = require('qs');
-var fs = require('fs'); // Loads/ starts up fs system actions
+var qs = require('qs'); // Starts up qs system actions
+var fs = require('fs'); // Starts up fs system actions
 const querystring = require('querystring');
 const { response } = require('express');
 
@@ -54,32 +54,78 @@ app.post("/process_page", function (request, response, next) {
 }
 })
 
-// Processes login form - part of code from Prof Port's Assignment 2 screencast
+// Processes login form - Modified Code from Prof Port's Assignment 2 screencast
 app.post('/process_login', function (request, response, next) {
     request.query["uname"] = request.body["uname"];
-    let username_entered = request.body["uname"];
+    // Sets user input for username as uname; put into lower case to make it case insensitive
+    let username_entered = request.body["uname"].toLowerCase();
     let password_entered = request.body["psw"];
+    // checks if username_entered matches any usernames in user_data
     if (typeof user_data[username_entered] != "undefined") {
+        // Checks if password matches the password that is connected to that username
         if (user_data[username_entered]["password"] == password_entered) {
+            // sends user to invoice if no problems
         response.redirect("invoice.html?" + qs.stringify(request.query));
     } else {
-        
+
     }
 } else {
-        
+
 }
+// sends back to login if login info does not match user_data info
+response.redirect("login.html?" + qs.stringify(request.query));
 })
 
 
-// Processes register form - part of code from Prof Port's Assignment 2 screencast
+// Processes register form - Modified Code from Prof Port's Assignment 2 screencast
 app.post('/process_register', function (request, response, next) {
     request.query["uname"] = request.body["uname"];  
+    request.query["email"] = request.body["email"]; 
+    request.query["psw"] = request.body["psw"]; 
+    request.query["pswRepeat"] = request.body["pswRepeat"];
+    
+    // USERNAME VALIDATION:
+    // Checks to make sure there are no special char in uname - 
+    // Code from https://www.dofactory.com/javascript/regular-expressions
+    var unameRegex = /^[A-Za-z0-9]+$/
+    // emailRegex checks to make sure that it is valid email
+    var emailRegex = /[0-9a-zA-Z]+@[0-9a-zA-Z]+[\.]{1}[0-9a-zA-Z]+[\.]?[0-9a-zA-Z]+/g;
+    if (unameRegex.test(request.body.uname)) {
+
+    } else {
+        response.redirect("register.html?" + qs.stringify(request.query));
+    }
+    // Sets uname to min of 4 char and max of 10 char
+    if ((request.body.uname.length < 4) || (request.body.uname.length > 10)) {
+        response.redirect("register.html?" + qs.stringify(request.query));
+    }
+
+    // PASSWORD VALIDATION:
+    // Sets psw to min of 6 char
+    if (request.body.psw.length < 6) {
+        response.redirect("register.html?" + qs.stringify(request.query));
+    }
+    // Makes sure that both psw and pswRepeat are the same
+    if (request.body.psw != request.body.pswRepeat){
+        response.redirect("register.html?" + qs.stringify(request.query));
+    }
+
+    // EMAIL VALIDATION:
+    // Checks whether email is in the proper format of an email address
+    if (emailRegex.test(request.body.email)) {
+
+    } else {
+        response.redirect("register.html?" + qs.stringify(request.query));
+    }
+
+    
+
     // add a new user to the DB
-    username = request.body["uname"];
+    // Adds uname to user_data in lowercase to make uname case insensitive
+    username = request.body["uname"].toLowerCase(); 
     user_data[username] = {};
     user_data[username].password = request.body["psw"];
     user_data[username].email = request.body["email"];
-    user_data[username].name = request.body["fullname"];
     // save updated user_data to file (DB)
     fs.writeFileSync(user_data_file, JSON.stringify(user_data));
     response.redirect("invoice.html?" + qs.stringify(request.query)); 

@@ -1,3 +1,4 @@
+    <!-- Vincent Wang - 4/22/21 -->
     <!-- Following code taken from W3 schools - How to create a register form (Followed along with getting started with Assignment 2 screencast) -->
     <!-- Creates a register form -->
 
@@ -28,12 +29,8 @@
           <label for="psw"><b>Password</b></label>
           <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
       
-          <label for="psw-repeat"><b>Repeat Password</b></label>
-          <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required>
-          <hr>
-
-          <label for="fullname"><b>Full Name</b></label>
-          <input type="text" placeholder="Full Name" name="fullname" id="fullname" required>
+          <label for="pswRepeat"><b>Repeat Password</b></label>
+          <input type="password" placeholder="Repeat Password" name="pswRepeat" id="pswRepeat" required>
           <hr>
       
           <button type="submit" class="registerbtn">Register</button>
@@ -41,6 +38,7 @@
       
         <div class="container signin">
           <script>
+          // sends to login.html if click this button for those who already have account
           document.write(`<p>Already have an account? <a href="login.html${location.search}">Sign In!</a></p>`);
          </script>
         </div>

@@ -1,3 +1,5 @@
+<!-- Vincent Wang - 4/22/21 -->
+
 <!-- Code taken from W3 schools - How to create a login form (Followed along with getting started with Assignment 2 screencast) -->
 <!-- Creates a login form -->
 <!DOCTYPE html>
@@ -25,11 +27,9 @@
             <input type="password" placeholder="Enter Password" name="psw" required>
         
             <button type="submit">Login</button>
-            <label>
-            <input type="checkbox" checked="checked" name="remember"> Remember me
-            </label>
         </div>
         <script>
+            // Sends to register.html if click this button for users who have not registered
             document.write(`<p>Don't have an account? <a href="./register.html${location.search}">Sign Up!</a></p>`);
         </script>
         </form>
