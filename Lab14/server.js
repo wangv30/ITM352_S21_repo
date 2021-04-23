@@ -77,15 +77,55 @@ app.post('/process_login', function (request, response, next) {
 })
 
 
-// Processes register form - part of code from Assignment 2 screencast
+// Processes register form - Modified Code from Prof Port's Assignment 2 screencast
 app.post('/process_register', function (request, response, next) {
     request.query["uname"] = request.body["uname"];  
+    request.query["email"] = request.body["email"]; 
+    request.query["psw"] = request.body["psw"]; 
+    request.query["pswRepeat"] = request.body["pswRepeat"];
+    
+    // USERNAME VALIDATION:
+    // Checks to make sure there are no special char in uname - 
+    // Code from https://www.dofactory.com/javascript/regular-expressions
+    var unameRegex = /^[A-Za-z0-9]+$/
+    // emailRegex checks to make sure that it is valid email
+    var emailRegex = /[0-9a-zA-Z]+@[0-9a-zA-Z]+[\.]{1}[0-9a-zA-Z]+[\.]?[0-9a-zA-Z]+/g;
+    if (unameRegex.test(request.body.uname)) {
+
+    } else {
+        response.redirect("register.html?" + qs.stringify(request.query));
+    }
+    // Sets uname to min of 4 char and max of 10 char
+    if ((request.body.uname.length < 4) || (request.body.uname.length > 10)) {
+        response.redirect("register.html?" + qs.stringify(request.query));
+    }
+
+    // PASSWORD VALIDATION:
+    // Sets psw to min of 6 char
+    if (request.body.psw.length < 6) {
+        response.redirect("register.html?" + qs.stringify(request.query));
+    }
+    // Makes sure that both psw and pswRepeat are the same
+    if (request.body.psw != request.body.pswRepeat){
+        response.redirect("register.html?" + qs.stringify(request.query));
+    }
+
+    // EMAIL VALIDATION:
+    // Checks whether email is in the proper format of an email address
+    if (emailRegex.test(request.body.email)) {
+
+    } else {
+        response.redirect("register.html?" + qs.stringify(request.query));
+    }
+
+    
+
     // add a new user to the DB
-    username = request.body["uname"];
+    // Adds uname to user_data in lowercase to make uname case insensitive
+    username = request.body["uname"].toLowerCase(); 
     user_data[username] = {};
     user_data[username].password = request.body["psw"];
     user_data[username].email = request.body["email"];
-    user_data[username].name = request.body["fullname"];
     // save updated user_data to file (DB)
     fs.writeFileSync(user_data_file, JSON.stringify(user_data));
     response.redirect("invoice.html?" + qs.stringify(request.query)); 
