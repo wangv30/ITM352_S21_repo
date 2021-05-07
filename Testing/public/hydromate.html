@@ -2,7 +2,7 @@
 <!-- Store page that displays my products and allows users to order -->
 
 <script src="products.js" type="text/javascript"></script>
-<script> var product = 'hydroflask'; </script>
+<script> var product = 'hydromate'; </script>
 <!-- Links to my products array within products.js -->
 <!-- code above taken from Assignment 1 instructions -->
 
@@ -77,9 +77,15 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
     <h3 class="w3-wide"><b><img src="./images/logo.png" alt="" width="150px"></b></h3> 
     <!-- Sets store logo -->
   </div>
-  <a href="#footer" class="w3-bar-item w3-button w3-padding">Contact</a> 
-  <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding" onclick="document.getElementById('newsletter').style.display='block'">Newsletter</a> 
-  <a href="#footer"  class="w3-bar-item w3-button w3-padding">Subscribe</a>
+<div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold">
+  <a href="hydroflask.html" class="w3-bar-item w3-button">Hydroflask</a>
+  <a href="pogo.html" class="w3-bar-item w3-button">Pogo</a>
+  <a href="fidus.html" class="w3-bar-item w3-button">Fidus</a>
+  <a href="hydromate.html" class="w3-bar-item w3-button">Hydromate</a>
+</div>
+<a href="#footer" class="w3-bar-item w3-button w3-padding">Contact</a> 
+<a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding" onclick="document.getElementById('newsletter').style.display='block'">Newsletter</a> 
+<a href="#footer"  class="w3-bar-item w3-button w3-padding">Subscribe</a>
 </nav>
 
 <!-- !PAGE CONTENT! -->
@@ -198,5 +204,33 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
     </div>
   </div>
 </div>
+
+<script>
+  // Accordion 
+  function myAccFunc() {
+    var x = document.getElementById("demoAcc");
+    if (x.className.indexOf("w3-show") == -1) {
+      x.className += " w3-show";
+    } else {
+      x.className = x.className.replace(" w3-show", "");
+    }
+  }
+  
+  // Click on the "Jeans" link on page load to open the accordion for demo purposes
+  document.getElementById("myBtn").click();
+  
+  
+  // Open and close sidebar
+  function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
+  }
+   
+  function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+    document.getElementById("myOverlay").style.display = "none";
+  }
+  </script>
+
 </body>
 </html>

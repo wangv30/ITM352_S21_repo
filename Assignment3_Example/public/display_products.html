@@ -1,25 +1,6 @@
 <head>
     <script src="./functions.js"></script>
     <script>
-        
-    // code taken from lab12 order_page_Ex3.html and example code in assignment instructions
-    function checkQuantityTextbox(theTextbox) {
-        errs = isNonNegInt(theTextbox.value, true);
-        if (errs.length == 0) errs = ['You want:'];
-        if (theTextbox.value.trim() == '') errs = ['Quantity'];
-        document.getElementById(theTextbox.name + '_label').innerHTML = errs.join(", ");
-    }
-
-    // function code from Invoice4
-    function isNonNegInt(q, returnErrors = false) {
-    var errors = []; // assume that there are no errors
-    if(q == "") q = 0; // Considers blank inputs as 0
-    if(Number(q) != q) errors.push('Not a number!'); // Check if string is number
-    else if(q < 0) errors.push('Negative value!'); // Check if non-negative
-    else if(parseInt(q) != q) errors.push('Not an integer!'); // Check if integer
-    return returnErrors ? errors : (errors.length == 0);
-    }
-
         var products_data;
         var total = 0;
         loadJSON('get_products_data', function (response) {
