@@ -28,7 +28,7 @@ return returnErrors ? errors : (errors.length == 0);
 // Code taken from examples provided in Assingment1 instructions
 window.onload = function () {
     let params = (new URL(document.location)).searchParams; // gets query string
-    // check if quantities are valid. IF valid then redirect to invoice
+    // check if quantities are valid
     if (params.has('purchase_submit')) {
         has_errors = false; // assume quantities are valid
         total_qty = 0; 
@@ -44,7 +44,7 @@ window.onload = function () {
                 }
             }
         }
-        // Respond to errors or redirect to invoice if no errors
+        // Alerts if have errors
         if(has_errors) {
             alert("Please enter only valid quantities!");
         } else if(total_qty == 0) { // if no quantity selection then alert
@@ -98,8 +98,12 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
     <p class="w3-right">
     <a href="login.html">Login</a>
     <a href="register.html">Register</a>
-    <i class="fa fa-shopping-cart w3-margin-right"></i> <!-- ATTACH CART.HTML LATER -->
+    <a href="cart.html"><i class="fa fa-shopping-cart w3-margin-right"></i></a>
+    <script>
+      document.write(`
     <input name= "purchase_submit" type="submit" value="Hydrate!">
+    `)
+  </script>
     <!-- Creates submit button -->
     </p>
   </header>

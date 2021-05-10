@@ -7,6 +7,7 @@ var app = express();
 var myParser = require("body-parser");
 var data = require('./public/products.js');
 var products = data.products
+var hydroflask = data.hydroflask
 app.use(myParser.urlencoded({ extended: true }));
 var qs = require('qs'); // Starts up qs system actions
 var fs = require('fs'); // Starts up fs system actions
@@ -33,7 +34,7 @@ app.post("/process_page", function (request, response, next) {
     const stringified = querystring.stringify(POST);
     has_errors = false; // assume quantities are valid
     total_qty = 0; 
-    for (i in products) {
+    for (i in hydroflask) {
         if (typeof POST[`quantity${i}`] != "undefined") {
             a_qty = POST[`quantity${i}`];
             // Sticky textboxes
@@ -45,11 +46,11 @@ app.post("/process_page", function (request, response, next) {
     }
     // Respond to errors or redirect to login if no errors - response.redirect code found from Getting start with Assign. 2 screencast
     if(has_errors) { // if has errors then keeps user on products_display page
-        response.redirect("./products_display.html?" + stringified);
+        response.redirect("./index.html?" + stringified);
     } else if(total_qty == 0) { // if no quantity selection then keeps user on products_display page
-        response.redirect("./products_display.html?" + stringified);
+        response.redirect("./index.html?" + stringified);
     } else { // if nothing wrong then send user to login page
-        response.redirect("./login.html?" + stringified);
+
     }
 }
 })

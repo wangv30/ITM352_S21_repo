@@ -106,8 +106,10 @@ var grand_total = subtotal + tax_amount + shipping_fee;
         <td width="54%"><strong>\$${grand_total.toFixed(2)}</strong></td>
       </tr>
       <tr>
-        <td style="text-align: center;" colspan="3" width="67%"><strong>OUR SHIPPING POLICY IS:A subtotal $0 - $49.99 will be $2 shipping A subtotal $50 - $99.99 will be $5 shipping Subtotals over $100 will be charged 5% of the subtotal amount</strong></td>
-        <td width="54%"><H1>Thank You For Your Order ${params.get("uname")}!</H1></td>
+        <td style="text-align: center;" colspan="5" width="54%"><H1>Thank You For Your Order ${params.get("uname")}!<br>This Invoice Has Been Sent To Your Email!</H1></td>
+      </tr> 
+      <tr>
+        <td style="text-align: center;" colspan="3" width="67%"><input type="button" value="Home!" onclick="window.location.href='index.html'"></td>
       </tr>
       `)
     </script>
