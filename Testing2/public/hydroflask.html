@@ -26,7 +26,7 @@ return returnErrors ? errors : (errors.length == 0);
 }
 
 // Adds selected quantites to cart
-function addCart(i) {                            // NEED CHANGES ?////////////////////////////////////////////////////////////
+function addCart(i) {                            //                                                               //
   var amtProduct = product_selection_form[`quantity${i}`].value;
   if (isNonNegInt(amtProduct) == true) { //if it has no errrors 
       sessionStorage[`${product}${i}`] = amtProduct; //save this product amount 
@@ -140,7 +140,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
     </section>
     `)
 
-    if (typeof sessionStorage[`${product}${i}`] != 'undefined') { //                                              CHANGE //////////////////////////////////////////
+    if (typeof sessionStorage[`${product}${i}`] != 'undefined') { //                                              //
                             product_selection_form[`quantity${i}`].value = sessionStorage[`${product}${i}`];
                         }
     }
