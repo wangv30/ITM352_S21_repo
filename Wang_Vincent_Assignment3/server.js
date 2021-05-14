@@ -128,7 +128,7 @@ app.post("/checkout", function (request, response) {
     
       // Set up mail server. Only will work on UH Network due to security restrictions
       var transporter = nodemailer.createTransport({
-        host: "mail.hawaii.edu",
+        host: 'mail.hawaii.edu',
         port: 25,
         secure: false, // use TLS
         tls: {
@@ -146,12 +146,13 @@ app.post("/checkout", function (request, response) {
     
       transporter.sendMail(mailOptions, function(error, info){
         if (error) {
-          invoice_str += '<br>Something Went Wrong! Please Try Again!';
+          invoice_str += '<br>There was an error and your invoice could not be emailed :(';
         } else {
-        }
 
+        }
+        response.send(invoice_str);
       });
-      response.send(invoice_str);
+     
     });
 
 // Since we are now using cookies and sessions I have decided to comment out the following code as it is no longer needed
