@@ -128,7 +128,7 @@ app.post("/checkout", function (request, response) {
     
       // Set up mail server. Only will work on UH Network due to security restrictions
       var transporter = nodemailer.createTransport({
-        host: "mail.gmail.com",
+        host: "mail.hawaii.edu",
         port: 25,
         secure: false, // use TLS
         tls: {
