@@ -42,19 +42,17 @@ app.post("/checkout", function (request, response) {
         cart = JSON.parse(request.query['cartData']); // parses for cartData and puts in cart
 
         // following invoice taken from cart.html
-      var invoice_str = `<link rel="stylesheet" href="invoice.css">
-      <title>Invoice</title>
-      </head>
+      invoice_str = `
+      <link rel="stylesheet" href="invoice.css">
       <body>
       <table border="2">
           <tbody>
-              <script>
             <tr>
               <th style="text-align: center;" width="43%">Item</th>
               <th style="text-align: center;" width="11%">Quantity</th>
               <th style="text-align: center;" width="13%">Price</th>
               <th style="text-align: center;" width="54%">Extended Price</th>
-            </tr>`
+            </tr>`;
             
       
             // Code taken from Invoice4 and modified while referring to example code from Assignment1 Instructions
@@ -74,7 +72,7 @@ app.post("/checkout", function (request, response) {
               <td align="center" width="11%">${quantity}</td>
               <td width="13%">\$${products[product][i].price}</td>
               <td width="54%">\$${extended_price}</td>
-            </tr>`
+            </tr>`;
       
             
       }
@@ -104,7 +102,6 @@ app.post("/checkout", function (request, response) {
       var grand_total = subtotal + tax_amount + shipping_fee;
 
       invoice_str += `
-            // Displays receipt
             <tr>
               <td style="text-align: center;" colspan="3" width="67%">Sub-total</td>
               <td width="54%">\$${subtotal.toFixed(2)}</td>
@@ -123,21 +120,15 @@ app.post("/checkout", function (request, response) {
             </tr>
             <tr>
               <td style="text-align: center;" colspan="3" width="67%"><strong>OUR SHIPPING POLICY IS:A subtotal $0 - $49.99 will be $2 shipping A subtotal $50 - $99.99 will be $5 shipping Subtotals over $100 will be charged 5% of the subtotal amount</strong></td>
-              <td style="text-align: center;" width="54%"><H1>Thanks For Browsing ${name}! Please Confirm Purchase Below If You Would Like To Checkout!</H1></td>
+              <td style="text-align: center;" width="54%"><H1>Thank You For Your Purchase ${name}! This Invoice Has Been E-Mailed To You At ${user_email}!</H1></td>
             </tr>
-            <tr>
-              <td style="text-align: center;" colspan="3" width="67%"><input type="button" value="Back to Store!" onclick="history.back()"></td>
-              <td style="text-align: center;" width="54%"><H1><input type="button" value="Confirm Purchase!" onclick="purchase()"></H1></td>
-            </tr>
-         
-          </script>
           </tbody>
         </table>      
       </body>`
     
       // Set up mail server. Only will work on UH Network due to security restrictions
       var transporter = nodemailer.createTransport({
-        host: "mail.hawaii.edu",
+        host: "mail.gmail.com",
         port: 25,
         secure: false, // use TLS
         tls: {
@@ -155,13 +146,12 @@ app.post("/checkout", function (request, response) {
     
       transporter.sendMail(mailOptions, function(error, info){
         if (error) {
-          invoice_str += '<br>It dont work. go away im still testing';
+          invoice_str += '<br>Something Went Wrong! Please Try Again!';
         } else {
-          invoice_str += `<br>Your invoice was mailed to ${user_email}`;
         }
-        response.send(invoice_str);
+
       });
-     
+      response.send(invoice_str);
     });
 
 // Since we are now using cookies and sessions I have decided to comment out the following code as it is no longer needed
