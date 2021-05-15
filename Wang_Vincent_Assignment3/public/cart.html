@@ -52,6 +52,12 @@ function clearProduct(theProduct, theIndex) {
     window.location.reload() // reload page
 }
 
+// clears cart/sessionStorage of all data and refreshes the page
+function clearCart() {
+  cart.clear()
+  window.location.reload()
+}
+
 // Creates a purchase function that blocks checkout if not logged in
 // checkout initiates the emailing of the invoice
 function purchase() {
@@ -71,13 +77,8 @@ function purchase() {
                 document.write(data)
             })
             alert(`Thank You For Your Purchase ${cartUser}! The Following Invoice Has Been Emailed To You!`)
+            clearCart()
         }
-}
-
-// clears cart/sessionStorage of all data and refreshes the page
-function clearCart() {
-  cart.clear()
-  window.location.reload()
 }
 
 </script>

@@ -122,6 +122,9 @@ app.post("/checkout", function (request, response) {
               <td style="text-align: center;" colspan="3" width="67%"><strong>OUR SHIPPING POLICY IS:A subtotal $0 - $49.99 will be $2 shipping A subtotal $50 - $99.99 will be $5 shipping Subtotals over $100 will be charged 5% of the subtotal amount</strong></td>
               <td style="text-align: center;" width="54%"><H1>Thank You For Your Purchase ${name}! This Invoice Has Been E-Mailed To You At ${user_email}!</H1></td>
             </tr>
+            <tr>
+            <td style="text-align: center;" colspan="3" width="67%"><input type="button" value="Back to Store!" onclick="history.back()"></td>
+          </tr>
           </tbody>
         </table>      
       </body>`
